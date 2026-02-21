@@ -64,3 +64,38 @@ export const news: NewsArticle[] = [
         seoDescription: 'Confira todos os detalhes sobre a Final Nacional de 2026 em Belo Horizonte.'
     }
 ];
+
+export const featuredVideos = [
+    {
+        id: 'v1',
+        youtubeId: 'v_LpG4S1ZlM',
+        title: 'KANT vs JHONY - FINAL NACIONAL 2025',
+        description: 'A batalha mais épica do ano, valendo a vaga para o Internacional.',
+        category: 'Oficiais',
+        date: '15 Fev, 2026'
+    },
+    {
+        id: 'v2',
+        youtubeId: 'f4e_O6mUay4',
+        title: 'MELHORES RIMAS - BATALHA DA ALDEIA #500',
+        description: 'Compilado exclusivo com as melhores rimas da edição histórica de 500 episódios.',
+        category: 'Compilados',
+        date: '10 Fev, 2026'
+    },
+    {
+        id: 'v3',
+        youtubeId: 'hXq_G8m7OqI',
+        title: 'DOC: O FREESTYLE NO RIO DE JANEIRO',
+        description: 'Minidocumentário sobre a resistência cultural das rimas no RJ.',
+        category: 'Documentários',
+        date: '05 Fev, 2026'
+    },
+    {
+        id: 'v4',
+        youtubeId: '9L7iK6n6rBM',
+        title: 'BATALHA DO TANQUE - FINAL DA EDIÇÃO #200',
+        description: 'Destaque para a nova geração que promete dominar a cena.',
+        category: 'Oficiais',
+        date: '28 Jan, 2026'
+    }
+];
