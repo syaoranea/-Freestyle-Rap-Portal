@@ -1,0 +1,104 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MC {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  stageName  String
+  realName   String?
+  photoUrl   String
+  city       String
+  state      String
+  bio        String?
+  rank       Int      @default(0)
+  wins       Int      @default(0)
+  losses     Int      @default(0)
+  titles     Int      @default(0)
+  socials    Json?    // { instagram: string, youtube: string, spotify: string }
+  videos     String[] // YouTube IDs
+  events     Event[]
+  rankings   Ranking[]
+  comments   Comment[]
+  likes      Like[]
+  createdAt  DateTime @default(now())
+}
+
+model Battle {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  location    String
+  city        String
+  state       String
+  description String
+  history     String?
+  logoUrl     String
+  events      Event[]
+  rankings    Ranking[]
+  createdAt   DateTime @default(now())
+}
+
+model Event {
+  id        String   @id @default(cuid())
+  battleId  String
+  battle    Battle   @relation(fields: [battleId], references: [id])
+  name      String
+  date      DateTime
+  location  String
+  mcs       MC[]
+  videoUrl  String?
+  winnerId  String?
+  createdAt DateTime @default(now())
+}
+
+model News {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  excerpt        String
+  content        String
+  coverImage     String
+  category       String
+  tags           String[]
+  author         String
+  seoDescription String
+  comments       Comment[]
+  createdAt      DateTime @default(now())
+}
+
+model Ranking {
+  id        String   @id @default(cuid())
+  mcId      String
+  mc        MC       @relation(fields: [mcId], references: [id])
+  battleId  String
+  battle    Battle   @relation(fields: [battleId], references: [id])
+  points    Int
+  position  Int
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  author    String
+  mcId      String?
+  mc        MC?      @relation(fields: [mcId], references: [id])
+  newsId    String?
+  news      News?    @relation(fields: [newsId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  mcId      String
+  mc        MC       @relation(fields: [mcId], references: [id])
+  createdAt DateTime @default(now())
+}

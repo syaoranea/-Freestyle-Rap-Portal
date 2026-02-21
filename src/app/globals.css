@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --accent: #ff0000; /* Crimson */
+  --highlight: #ffd700; /* Gold */
+  --muted: #1a1a1a;
+  --card: #111111;
+  --border: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: "Oswald", sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.urban-gradient {
+  background: linear-gradient(135deg, var(--background) 0%, #1a1a1a 100%);
+}
+
+.gold-text {
+  color: var(--highlight);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.crimson-border {
+  border-color: var(--accent);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
